@@ -5,20 +5,22 @@ from tweepy import OAuthHandler, Stream, StreamListener
 from kafka import KafkaProducer
 import time
 
-KAFKA_TOPIC = "tweets-topic"
+KAFKA_TOPIC = "tweets"
 
 # Go to http://apps.twitter.com and create an app.
 # The consumer key and secret will be generated for you after
-api_key=""
-api_secret=""
-access_token=""
-access_token_secret=""
+access_token = "1385739478422142978-Aho4uhuOIvvary6jgnbUR5IrCO95mv"
+access_token_secret = "cUBSLefXFpq8IuqMUxsTOs66zPeAZG6Ye3R9t1m49f4Gb"
+api_key = "IAeW3AFMs2Hl25O1bVcGEJyno"
+api_secret = "ihmKdShKEsurxuYyM3yD2Pyv9SEYMqZFHFdBqQCyMcfRjbhzEl"
+
 
 class StdOutListener(StreamListener):
     """ A listener handles tweets that are received from the stream.
     This is a basic listener that just prints received tweets to stdout.
     """
     def __init__(self):
+        super().__init__()
         self.producer = KafkaProducer(bootstrap_servers='localhost:9092')
 
     def on_data(self, data):
@@ -32,6 +34,7 @@ class StdOutListener(StreamListener):
 
     def on_error(self, status):
         print(status)
+
 
 if __name__ == '__main__':
     l = StdOutListener()
@@ -49,4 +52,4 @@ if __name__ == '__main__':
     #for tweet in posts[:5]:
         #print(str(i) + ') ' + tweet.full_text + '\n')
         #i = i+1
-    stream.filter(track=['hola'])
+    stream.filter(track=['medellin'])
