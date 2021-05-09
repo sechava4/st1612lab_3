@@ -1,21 +1,24 @@
 import datetime
 import json
 import requests
-from kafka import KafkaClient
+from kafka import KafkaProducer, KafkaConsumer
 
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
+app.config["kafka_consumer"] = KafkaConsumer(bootstrap_servers='localhost:9092')
 
 
-def get_kafka_client():
-    return KafkaClient(hosts='127.0.0.1:9092')
+def get_kafka_client(consumer=None):
+    if consumer:
+        return KafkaConsumer(bootstrap_servers='localhost:9092')
+    return KafkaProducer(bootstrap_servers='localhost:9092')
 
 
 @app.route('/topics/')
 def topics():
-    client = get_kafka_client()
-    return jsonify([topic for topic in client.topics])
+    client = get_kafka_client(consumer=True)
+    return jsonify([topic for topic in client.topics()])
 
 
 @app.route('/post/<topic>', methods=['POST'])
@@ -51,6 +54,11 @@ def add_entry():
         r = requests.get(google_url).json()
 
         data["elevation"] = r["results"][0]["elevation"]
+        try:
+            prod = get_kafka_client()
+            prod.send('vehicle', value=str.encode(data))
+        except Exception as e:
+            print(e)
 
         return json.dumps(data)
 
