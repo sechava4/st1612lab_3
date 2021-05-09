@@ -61,6 +61,7 @@ def add_entry():
             print(e)
 
         return json.dumps(data)
+    return dict(data="empty")
 
 
 if __name__ == "__main__":
