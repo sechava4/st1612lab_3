@@ -55,6 +55,5 @@ def add_entry():
         return json.dumps(data)
 
 
-
-
-
+if __name__ == "__main__":
+    app.run(debug=True, port=8080)
