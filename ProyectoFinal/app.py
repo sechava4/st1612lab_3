@@ -37,7 +37,10 @@ def add_entry():
     """
     communication route for handling incoming vehicle data
     """
-    args = request.args
+    if request.method == "POST":
+        args = request.get_json()
+    else:
+        args = request.args
     if args:
         data = args
         data["timestamp"] = datetime.datetime.utcnow()
