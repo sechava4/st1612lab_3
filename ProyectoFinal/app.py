@@ -40,7 +40,7 @@ def add_entry():
     if request.method == "POST":
         args = request.get_json()
     else:
-        args = request.args
+        args = request.args.to_dict()
     if args:
         data = args
         data["timestamp"] = str(datetime.datetime.utcnow())
