@@ -60,7 +60,7 @@ def add_entry():
             data["elevation"] = r["results"][0]["elevation"]
             try:
                 prod = get_kafka_client()
-                prod.send('vehicle', value=str.encode(data))
+                prod.send('vehicle-events', value=json.dumps(data).encode("utf-8"))
             except Exception as e:
                 print(e)
 
