@@ -43,7 +43,7 @@ def add_entry():
         args = request.args
     if args:
         data = args
-        data["timestamp"] = datetime.datetime.utcnow()
+        data["timestamp"] = str(datetime.datetime.utcnow())
 
         data["coords"] = (float(args["latitude"]), float(args["longitude"]))
         google_url = (
