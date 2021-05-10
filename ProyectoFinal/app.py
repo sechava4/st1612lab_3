@@ -32,7 +32,7 @@ def write_to_topic(topic):
     return "OK"
 
 
-@app.route("/addjson")
+@app.route("/addjson",  methods=["GET", "POST"])
 def add_entry():
     """
     communication route for handling incoming vehicle data
