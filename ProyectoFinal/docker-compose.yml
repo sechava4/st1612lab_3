@@ -26,11 +26,13 @@ services:
             - net
 
     my_mongodb:
-        image: mongo
+        image: mongo:latest
         container_name: my_mongodb
         environment:
             - PUID=1000
             - PGID=1000
+        ports:
+            - 27017-27019:27017-27019
         volumes:
             mongodb_data:/data/db
         networks:
