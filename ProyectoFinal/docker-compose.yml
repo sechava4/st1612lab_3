@@ -10,7 +10,7 @@ services:
             - 9200:9200
             - 9300:9300
         networks:
-            - elastic
+            - net
         volumes:
             - elasticsearch_data:/usr/share/elasticsearch/data
 
@@ -23,10 +23,22 @@ services:
         ports:
             - 5601:5601
         networks:
-            - elastic
+            - net
+
+    my_mongodb:
+        image: mongo
+        container_name: my_mongodb
+        environment:
+            - PUID=1000
+            - PGID=1000
+        volumes:
+            mongodb_data:/data/db
+        networks:
+            - net
 
 networks:
-    elastic:
+    net:
 
 volumes:
     elasticsearch_data:
+    mongodb_data:
