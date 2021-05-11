@@ -71,7 +71,7 @@ def add_entry():
     return dict(data="empty")
 
 
-@app.route("/mongodb/num-events",  methods=["GET"])
+@app.route("/mongodb/events-count", methods=["GET"])
 def get_events_in_mongodb():
     """
     Return the number of events in the mongodb database 'vehicleevents'
@@ -80,7 +80,7 @@ def get_events_in_mongodb():
     client = pymongo.MongoClient("mongodb://localhost:27017")
     db = client["vehicleeventsdb"]
     events = db.get_collection("events")
-    return events.find().count()
+    return str(events.find().count())
 
 
 if __name__ == "__main__":
