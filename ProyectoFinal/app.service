@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve app
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/ubuntu/st1612labs/ProyectoFinal
+Environment="PATH=/home/ubuntu/st1612labs/ProyectoFinal/venv/bin"
+ExecStart=/home/ubuntu/st1612labs/ProyectoFinal/venv/bin/python app.py
+
+[Install]
+WantedBy=multi-user.target
