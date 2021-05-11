@@ -1,6 +1,7 @@
 import datetime
 import json
 import requests
+import pymongo
 from kafka import KafkaProducer, KafkaConsumer
 
 from flask import Flask, jsonify, request
@@ -68,6 +69,18 @@ def add_entry():
         args["status"] = "invalid location"
         return json.dumps(args)
     return dict(data="empty")
+
+
+@app.route("/mongodb/num-events",  methods=["GET"])
+def get_events_in_mongodb():
+    """
+    Return the number of events in the mongodb database 'vehicleevents'
+    in the collection 'events'.
+    """
+    client = pymongo.MongoClient("mongodb://localhost:27017")
+    db = client["vehicleeventsdb"]
+    events = db.get_collection("events")
+    return events.find().count()
 
 
 if __name__ == "__main__":
