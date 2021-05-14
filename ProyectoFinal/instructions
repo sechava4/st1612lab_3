@@ -10,6 +10,9 @@ docker-compose up -d # (Re)Crear y subir contenedores.
 docker-compose start # Subir contenedores.
 docker-compose stop # Parar contenedores.
 
+# Arrancar mondodb_consumer.py en background
+python mongodb_consumer.py 2>&1 > /dev/null &
+
 # Mirar indice en Elasticsearch.
 curl -XGET http://localhost:9200/_cat/indices/vehicle-events
 
