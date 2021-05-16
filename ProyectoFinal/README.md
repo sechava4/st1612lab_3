@@ -1,3 +1,5 @@
 # st1612
-### Projecto final:
-Sistema de monitoreo de vehículos eléctricos usando kafka, mongodb, elasticsearch y kibana
+### Proyecto Final
+Sistema de monitoreo de vehículos eléctricos usando Kafka, MongoDB, Elasticsearch y Kibana.
+
+### Instrucciones de Replicación
