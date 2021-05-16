@@ -5,16 +5,16 @@ Sistema de monitoreo de vehículos eléctricos usando Kafka, MongoDB, Elasticsea
 <!-- TOC -->
 
 - [st1612](#st1612)
-        - [Proyecto Final](#proyecto-final)
-        - [Integrantes](#integrantes)
-        - [Arquitectura de la solución](#arquitectura-de-la-solución)
-        - [Instrucciones de Replicación](#instrucciones-de-replicación)
-            - [Kafka](#kafka)
-            - [Consumidor Logstash](#consumidor-logstash)
-            - [Consumidor PyMongo](#consumidor-pymongo)
-            - [Elasticsearch](#elasticsearch)
-            - [MongoDB](#mongodb)
-            - [Kibana](#kibana)
+    - [Proyecto Final](#proyecto-final)
+    - [Integrantes](#integrantes)
+    - [Arquitectura de la solución](#arquitectura-de-la-solución)
+    - [Instrucciones de Replicación](#instrucciones-de-replicación)
+        - [Kafka](#kafka)
+        - [Consumidor Logstash](#consumidor-logstash)
+        - [Consumidor PyMongo](#consumidor-pymongo)
+        - [Elasticsearch](#elasticsearch)
+        - [MongoDB](#mongodb)
+        - [Kibana](#kibana)
 
 <!-- /TOC -->
 
