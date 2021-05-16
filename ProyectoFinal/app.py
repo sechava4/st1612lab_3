@@ -22,17 +22,6 @@ def topics():
     return jsonify([topic for topic in client.topics()])
 
 
-@app.route('/post/<topic>', methods=['POST'])
-def write_to_topic(topic):
-    # make sure we have valid json
-    json = request.get_json()
-    client = get_kafka_client()
-    topic = client.topics[topic.encode('ascii')]
-    producer = topic.get_sync_producer()
-    producer.send(topic, value=str.encode(json))
-    return "OK"
-
-
 @app.route("/addjson",  methods=["GET", "POST"])
 def add_entry():
     """
