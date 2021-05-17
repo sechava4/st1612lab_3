@@ -68,7 +68,7 @@ def get_events_in_mongodb():
     client = pymongo.MongoClient("mongodb://localhost:27017")
     db = client["vehicleeventsdb"]
     events = db.get_collection("events")
-    return str(events.find().count())
+    return "<h1> Events stored " + str(events.find().count()) + " </h1>"
 
 
 if __name__ == "__main__":
